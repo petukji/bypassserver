@@ -8,8 +8,7 @@ app.use(express.json());
 app.post('/temp', async (req, res) => {
     try {
          const { tmp1, tmp2,tmp3,tmp4, tmp5 } = req.body;
-        // const result = var1 + var2;
-      
+    
       
         const URL = tmp4;
 
@@ -18,8 +17,6 @@ app.post('/temp', async (req, res) => {
         const REQUEST_QUERYSTRING = "";
         const REQUEST_BODY = JSON.stringify(tmp3);
         const xtimestamp = Date.now();
-        console.log("1");    
-        console.log(req.body);    
           
 
         const digest = crypto.createHmac('sha512', tmp1)
@@ -34,9 +31,9 @@ app.post('/temp', async (req, res) => {
         digest.update(xtimestamp.toString());
         digest.update('\n');
         const signature = digest.digest('hex');
-        console.log("2");
+
         const headers = { 'Content-Type': 'application/json', "access_key": tmp2, 'signature': signature.toString(), 'X-Timestamp': xtimestamp.toString() }
-        console.log("3");
+
         const response = await fetch(URL, {
             method: 'POST',
             headers,
@@ -55,7 +52,7 @@ app.post('/temp', async (req, res) => {
       
     } catch (error) {
         console.error(error);
-        return res.status(500).json({ error: 'Internal Server Error/Invalid Input' });
+        return res.status(500).json({ error: 'Internal Server Error/byPass Error' });
     }
 });
 
