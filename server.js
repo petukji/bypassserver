@@ -16,7 +16,7 @@ app.post('/temp', async (req, res) => {
         const REQUEST_METHOD = "POST";
         const REQUEST_PATH = tmp5;
         const REQUEST_QUERYSTRING = "";
-        const REQUEST_BODY = JSON.stringify(req.body);
+        const REQUEST_BODY = JSON.stringify(tmp3);
         const xtimestamp = Date.now();
 
         const digest = crypto.createHmac('sha512', tmp1)
@@ -37,7 +37,7 @@ app.post('/temp', async (req, res) => {
         const response = await fetch(URL, {
             method: 'POST',
             headers,
-            body: tmp3,
+            body: REQUEST_BODY,
         });
 
         const responseJson = await response.json();
