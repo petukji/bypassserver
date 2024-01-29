@@ -19,7 +19,10 @@ app.post('/temp', async (req, res) => {
         const REQUEST_BODY = JSON.stringify(tmp3);
         const xtimestamp = Date.now();
         console.log("1");    
-        const digest = crypto.createHmac('sha512', tmp1.toString())
+        console.log(tmp1);    
+        console.log(tmp2);    
+
+        const digest = crypto.createHmac('sha512', tmp1)
         digest.update(REQUEST_METHOD);
         digest.update('\n');
         digest.update(REQUEST_PATH);
@@ -32,7 +35,7 @@ app.post('/temp', async (req, res) => {
         digest.update('\n');
         const signature = digest.digest('hex');
         console.log("2");
-        const headers = { 'Content-Type': 'application/json', "access_key": tmp2.toString(), 'signature': signature.toString(), 'X-Timestamp': xtimestamp.toString() }
+        const headers = { 'Content-Type': 'application/json', "access_key": tmp2, 'signature': signature.toString(), 'X-Timestamp': xtimestamp.toString() }
         console.log("3");
         const response = await fetch(URL, {
             method: 'POST',
