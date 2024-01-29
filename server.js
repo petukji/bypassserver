@@ -14,6 +14,10 @@ app.post('/temp', async (req, res) => {
     }
 });
 
+app.get('/dummy', (req, res) => {
+    return res.json({ message: 'Dummy Get request working' });
+});
+
 app.listen(3000,()=>{
     console.log("Server Connected On Post 3000");
 });
