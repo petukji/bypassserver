@@ -19,8 +19,8 @@ app.post('/temp', async (req, res) => {
         const REQUEST_BODY = JSON.stringify(tmp3);
         const xtimestamp = Date.now();
         console.log("1");    
-        console.log(tmp1);    
-        console.log(tmp2);    
+        console.log(req.body);    
+          
 
         const digest = crypto.createHmac('sha512', tmp1)
         digest.update(REQUEST_METHOD);
