@@ -32,7 +32,8 @@ app.post('/temp', async (req, res) => {
         digest.update('\n');
         const signature = digest.digest('hex');
 
-        const headers = { 'Content-Type': 'application/json', "access_key": tmp2, 'signature': signature.toString(), 'X-Timestamp': xtimestamp.toString() }
+        //const headers = { 'Content-Type': 'application/json', "access_key": tmp2, 'signature': signature.toString(), 'X-Timestamp': xtimestamp.toString() }
+        const headers = { 'Content-Type': 'application/json', "access_key": tmp2, 'signature': signature.toString(), 'X-Timestamp': xtimestamp.toString(),"staticIPsEnabled": true, }
 
         const response = await fetch(URL, {
             method: 'POST',
